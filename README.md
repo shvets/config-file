@@ -22,11 +22,11 @@ Or install it yourself as:
 ```ruby
 require 'config_file'
 
-configurator = ConfigFile.bew
+config_file = ConfigFile.bew
 
-config1 = configurator.load "spec/config/test_config.yaml"
-config2 = configurator.load "spec/config/test_config.json"
-config3 = configurator.load "spec/config/test_config.rb"
+config1 = config_file.load "spec/config/test_config.yaml"
+config2 = config_file.load "spec/config/test_config.json"
+config3 = config_file.load "spec/config/test_config.rb"
 ```
 
 ## Contributing
