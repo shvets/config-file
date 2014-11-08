@@ -22,7 +22,7 @@ Or install it yourself as:
 ```ruby
 require 'config_file'
 
-config_file = ConfigFile.bew
+config_file = ConfigFile.new
 
 config1 = config_file.load "spec/config/test_config.yaml"
 config2 = config_file.load "spec/config/test_config.json"
