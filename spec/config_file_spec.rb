@@ -24,4 +24,10 @@ describe ConfigFile do
     expect(config[:property1]).to eq "value1"
     expect(config[:property2][:property21]).to eq "value21"
   end
+
+  it "raises exception for unsupported type" do
+    expect {
+      subject.load "spec/config/test_config.pdf"
+    }.to raise_exception(ArgumentError)
+  end
 end

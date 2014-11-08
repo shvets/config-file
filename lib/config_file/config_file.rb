@@ -1,36 +1,27 @@
-require 'meta_methods/core'
-require 'yaml'
-require 'json'
-
 class ConfigFile
-  YAML_EXT = '.yaml'
-  RUBY_EXT = '.rb'
-  JSON_EXT = 'json'
+  @types = []
+
+  def self.register(type)
+    @types << type unless @types.include? type
+  end
+
+  def self.type(extension)
+    @types.detect { |type| type.extensions.include? extension }
+  end
 
   attr_reader :config
 
   def load file_name, ext=nil
     ext = File.extname(file_name) unless ext
 
-    @config = case ext
-      when YAML_EXT
-        YAML.load_file(File.expand_path(file_name))
+    config_file_type = ConfigFile.type(ext)
 
-      when RUBY_EXT
-        content = File.open(file_name).read
+    if config_file_type
+      config_file = config_file_type.new
 
-        MetaMethods::Core.instance.block_to_hash(content)
-
-      when JSON_EXT
-        content = File.open(file_name).read
-
-        JSON.parse(content)
-
-      else
-        content = File.open(file_name).read
-
-        JSON.parse(content)
+      @config = config_file.read file_name
+    else
+      raise ArgumentError, "Configuration from #{ext} is not supported"
     end
   end
-
 end
