@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<properties>
+  <property name="property1" value="value1"/>
+  <property>
+    <name>property2</name>
+    <value>value2</value>
+  </property>
+
+  <property name="property3" value="#{properties.property1}123"/>
+</properties>

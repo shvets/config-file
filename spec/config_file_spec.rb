@@ -30,4 +30,33 @@ describe ConfigFile do
       subject.load "spec/config/test_config.pdf"
     }.to raise_exception(ArgumentError)
   end
+
+  # it "registers and uses xml format" do
+  #   require 'nokogiri'
+  #   require 'active_support/core_ext/hash'
+  #
+  #   require 'config_file/config_file'
+  #
+  #   class ConfigType
+  #     class Xml
+  #       ConfigFile.register(self)
+  #
+  #       def self.extensions
+  #         [".xml"]
+  #       end
+  #
+  #       def read file_name
+  #         doc = Nokogiri::XML(File.read(file_name))
+  #
+  #         HashWithIndifferentAccess.new Hash.from_xml(doc.to_s)
+  #       end
+  #     end
+  #   end
+  #
+  #   config_file = ConfigFile.new
+  #
+  #   config = config_file.load("spec/config/test_config.xml")
+  #
+  #   p config
+  # end
 end

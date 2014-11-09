@@ -4,6 +4,8 @@ group :default do
   gem "meta_methods"
   gem "json"
   gem "text-interpolator"
+  # gem "nokogiri"
+  # gem "activesupport"
 end
 
 group :development do
