@@ -5,21 +5,21 @@ require 'config_file'
 describe ConfigFile do
 
   it "reads from yaml" do
-    config = subject.load "spec/config/test_config.yaml"
+    config = subject.read "spec/config/test_config.yaml"
 
     expect(config['property1']).to eq "value1"
     expect(config['property2']['property21']).to eq "value21"
   end
 
   it "reads from json" do
-    config = subject.load "spec/config/test_config.json"
+    config = subject.read "spec/config/test_config.json"
 
     expect(config[:property1]).to eq "value1"
     expect(config[:property2][:property21]).to eq "value21"
   end
 
   it "reads from ruby fragment" do
-    config = subject.load "spec/config/test_config.rb"
+    config = subject.read "spec/config/test_config.rb"
 
     expect(config[:property1]).to eq "value1"
     expect(config[:property2][:property21]).to eq "value21"
@@ -27,7 +27,7 @@ describe ConfigFile do
 
   it "raises exception for unsupported type" do
     expect {
-      subject.load "spec/config/test_config.pdf"
+      subject.read "spec/config/test_config.pdf"
     }.to raise_exception(ArgumentError)
   end
 

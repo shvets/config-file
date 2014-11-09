@@ -11,3 +11,7 @@
 == Version 1.0.2
 
 * Adding text interpolation for json format.
+
+== Version 1.1.0
+
+* Rename load method to read.

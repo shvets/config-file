@@ -11,7 +11,7 @@ class ConfigFile
 
   attr_reader :config
 
-  def load file_name, ext=nil
+  def read file_name, ext=nil
     ext = File.extname(file_name) unless ext
 
     config_file_type = ConfigFile.type(ext)
