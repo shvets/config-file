@@ -3,6 +3,7 @@ source "https://rubygems.org"
 group :default do
   gem "meta_methods"
   gem "json"
+  gem "text-interpolator"
 end
 
 group :development do

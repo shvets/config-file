@@ -27,6 +27,7 @@ config_file = ConfigFile.new
 config1 = config_file.load "spec/config/test_config.yaml"
 config2 = config_file.load "spec/config/test_config.json"
 config3 = config_file.load "spec/config/test_config.rb"
+config4 = config_file.load "spec/config/.test_config", ".rb"
 ```
 
 ## Contributing

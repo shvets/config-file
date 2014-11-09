@@ -14,8 +14,8 @@ describe ConfigFile do
   it "reads from json" do
     config = subject.load "spec/config/test_config.json"
 
-    expect(config['property1']).to eq "value1"
-    expect(config['property2']['property21']).to eq "value21"
+    expect(config[:property1]).to eq "value1"
+    expect(config[:property2][:property21]).to eq "value21"
   end
 
   it "reads from ruby fragment" do

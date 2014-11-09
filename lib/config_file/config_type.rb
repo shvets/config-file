@@ -1,6 +1,7 @@
 require 'meta_methods/core'
 require 'yaml'
 require 'json'
+require 'text_interpolator'
 
 require 'config_file/config_file'
 
@@ -25,7 +26,7 @@ class ConfigType
     end
 
     def read file_name
-      content = File.open(file_name).read
+      content = File.read(file_name)
 
       MetaMethods::Core.instance.block_to_hash(content)
     end
@@ -39,9 +40,13 @@ class ConfigType
     end
 
     def read file_name
-      content = File.open(file_name).read
+      interpolator = TextInterpolator.new
 
-      ::JSON.parse(content)
+      content = File.read(file_name)
+
+      hash = ::JSON.parse(content, :symbolize_names => true)
+
+      interpolator.interpolate hash
     end
   end
 end
